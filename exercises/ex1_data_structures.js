@@ -32,21 +32,22 @@ var years = [
 
 // Task 1
 // Console log the length of each Array
-// console log the length of the names array
 console.log(names.length);
 console.log(URLs.length);
 console.log(years.length);
 
 
-// // Task 2
-// // add a new item to an array
-// var newName = "The International Center of Photography"
-// var newURL = "icp.org"
-// var newYear = 1974
+// Task 2
+// add a new item to an array
+var newName = "The International Center of Photography"
+var newURL = "icp.org"
+var newYear = 1974
 
-// names.push(/* COMPLETE ME */);
-// URLs[/* COMPLETE ME */] = newURL;
-// years = years.concat(/* COMPLETE ME */);
+names.push(newName);
+URLs[URLs.length] = newURL;
+years = years.concat(newYear);
+
+console.log(names, URLs, years);
 
 // // Task 3
 // // construct an Object out of our three Arrays

@@ -32,66 +32,66 @@ var years = [
 
 // Task 1
 // Console log the length of each Array
-console.log(count(names));
-console.log(/* COMPLETE ME */)
-console.log(/* COMPLETE ME */)
+// console log the length of the names array
+console.log(names.length);
+console.log(URLs.length);
+console.log(years.length);
 
 
+// // Task 2
+// // add a new item to an array
+// var newName = "The International Center of Photography"
+// var newURL = "icp.org"
+// var newYear = 1974
 
-// Task 2
-// add a new item to an array
-var newName = "The International Center of Photography"
-var newURL = "icp.org"
-var newYear = 1974
+// names.push(/* COMPLETE ME */);
+// URLs[/* COMPLETE ME */] = newURL;
+// years = years.concat(/* COMPLETE ME */);
 
-names.push(/* COMPLETE ME */);
-URLs[/* COMPLETE ME */] = newURL;
-years = years.concat(/* COMPLETE ME */);
+// // Task 3
+// // construct an Object out of our three Arrays
+// // the result should look similar to this:
+// var result = {
+//   "Museum Name 1": {
+//     URL: "www.museumwebsite.com",
+//     year: 2019
+//   }
+// }
 
-// Task 3
-// construct an Object out of our three Arrays
-// the result should look similar to this:
-var result = {
-  "Museum Name 1": {
-    URL: "www.museumwebsite.com",
-    year: 2019
-  }
-}
+// var museums = {};
+// for (var i = 0; i < names.length; i++) {
+//   var currentName = names[/* COMPLETE ME */];
+//   /* COMPLETE ME */ = URLs[i];
+//   var currentYear = /* COMPLETE ME */;
 
-var museums = {};
-for (var i = 0; i < names.length; i++) {
-  var currentName = names[/* COMPLETE ME */];
-  /* COMPLETE ME */ = URLs[i];
-  var currentYear = /* COMPLETE ME */;
+//   museums[currentName] = {};
+//   museums[currentName]["URL"] = currentURL;
+//   museums[currentName].year = currentYear;
+// }
 
-  museums[currentName] = {};
-  museums[currentName]["URL"] = currentURL;
-  museums[currentName].year = currentYear;
-}
+// console.log('museums', museums)
 
-console.log('museums', museums)
+// var museums2 = {};
+// names.forEach(function(/* COMPLETE ME*/) {
+//   museums2[n] = {};
 
-var museums2 = {};
-names.forEach(function(/* COMPLETE ME*/) {
-  museums2[n] = {};
+//   var currentURL = URLs[i];
+//   var currentYear = years[i];
 
-  var currentURL = URLs[i];
-  var currentYear = years[i];
+//   museums2[n].URL = currentURL;
+//   museums2[n]["year"] = currentYear;
+// });
 
-  museums2[n].URL = currentURL;
-  museums2[n]["year"] = currentYear;
-});
+// console.log('museums2', museums2)
 
-console.log('museums2', museums2)
+// // Task
+// // Write a function to add a new museum object, with properties URL and year, to an existing museums object. Call it on museums2
+// function addAMuseum(museums, newName, newURL, newYear){
+//   /* COMPLETE ME */
 
-// Task
-// Write a function to add a new museum object, with properties URL and year, to an existing museums object. Call it on museums2
-function addAMuseum(museums, newName, newURL, newYear){
-  /* COMPLETE ME */
+//   return museums;
+// }
 
-  return museums;
-}
+// addAMuseum(/* COMPLETE ME */);
 
-addAMuseum(/* COMPLETE ME */);
-
-console.log('museums2', museums2);
+// console.log('museums2', museums2);

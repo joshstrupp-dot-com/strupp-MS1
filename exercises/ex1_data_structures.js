@@ -37,6 +37,21 @@ console.log(URLs.length);
 console.log(years.length);
 
 
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
 // Task 2
 // add a new item to an array
 var newName = "The International Center of Photography"
@@ -52,6 +67,13 @@ console.log(names, URLs, years);
 
 
 console.log(names[1]);
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 // Task 3
 // construct an Object out of our three Arrays
@@ -88,17 +110,39 @@ names.forEach(function(n, i) {
   museums2[n]["year"] = currentYear;
 });
 
-console.log('museums2', museums2)
+// console.log('museums2', museums2)
 // console.log(JSON.stringify(museums2, null, 2));
 
-// // // Task
-// // // Write a function to add a new museum object, with properties URL and year, to an existing museums object. Call it on museums2
-// // function addAMuseum(museums, newName, newURL, newYear){
-// //   /* COMPLETE ME */
 
-// //   return museums;
-// // }
 
-// // addAMuseum(/* COMPLETE ME */);
 
-// // console.log('museums2', museums2);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+// Task
+// Write a function to add a new museum object, with properties URL and year, to an existing museums object. Call it on museums2
+
+
+// // define new name, url, and year
+// var newName = "The Smithsonian Natural History Museum";
+// var newURL = "naturalhistory.si.edu";
+// var newYear = 1919;
+
+
+function addAMuseum(museums, newName, newURL, newYear){
+
+  var museums2 = museums;
+  museums2[newName] = {};
+  museums2[newName].URL = newURL;
+  museums2[newName].year = newYear;
+  return museums;
+}
+
+addAMuseum(museums2, "The Smithsonian Natural History Museum", "naturalhistory.si.edu", 1919);
+
+console.log('museums2', museums2);
+console.log(JSON.stringify(museums2, null, 2));

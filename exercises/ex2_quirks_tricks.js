@@ -24,23 +24,31 @@ if (1 === true) {
 
 var test3 = test1 === test2;
 
-// Task
-// Change this code so test4 is false and test5 is true. Use console.log() to confirm your cod works.
+console.log(test3);
+// TEST 3 is false because test1 is true and test2 is false.
 
-var test4 = 0 == "";
-var test5 = 1 === "1";
 
-console.log("test4 is", test4, "and test 5 is", test5);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Task
-// What are the values of p, q, and r? Research what is going on here.
-var w = 0.1;
-var x = 0.2;
-var y = 0.4;
-var z = 0.5;
 
-var p = w + x;
 
-var q = z - x;
+// // Task
+// // Change this code so test4 is false and test5 is true. Use console.log() to confirm your cod works.
 
-var r = y - w;
+// var test4 = 0 == "";
+// var test5 = 1 === "1";
+
+// console.log("test4 is", test4, "and test 5 is", test5);
+
+// // Task
+// // What are the values of p, q, and r? Research what is going on here.
+// var w = 0.1;
+// var x = 0.2;
+// var y = 0.4;
+// var z = 0.5;
+
+// var p = w + x;
+
+// var q = z - x;
+
+// var r = y - w;

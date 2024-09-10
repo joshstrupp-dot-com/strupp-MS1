@@ -11,6 +11,7 @@ const searchBaseURL = "https://api.si.edu/openaccess/api/v1.0/search";
 // constructing the initial search query
 // const search =  'mask AND unit_code:"FSG"';
 const search =  `Flowers AND unit_code:"CHNDM" AND object_type:"Embroidery (visual works)" AND online_media_type:"Images"`;
+// const search =  'object_type:"book"';
 
 
 // array that we will write into

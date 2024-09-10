@@ -23,12 +23,15 @@ if (1 === true) {
 }
 
 var test3 = test1 === test2;
+console.log("test3 is", test3);
+//test 3 is false
+
 
 // Task
 // Change this code so test4 is false and test5 is true. Use console.log() to confirm your cod works.
 
-var test4 = 0 == "";
-var test5 = 1 === "1";
+var test4 = 0 === "";
+var test5 = 1 == "1";
 
 console.log("test4 is", test4, "and test 5 is", test5);
 
@@ -44,3 +47,7 @@ var p = w + x;
 var q = z - x;
 
 var r = y - w;
+
+// What are the values of p, q, and r? Research what is going on here.
+console.log("p is", p, "q is", q, "r is", r);
+// p is 0.30000000000000004 q is 0.3 r is 0.30000000000000004

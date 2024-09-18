@@ -1,3 +1,5 @@
+// Please note that I leveraged Copilot and ChatGPT to generate the code below.
+
 function generateSmithsonianQuery(
   api_key,
   rows = 100,
@@ -57,19 +59,96 @@ const params = {
 };
 
 // You can now add a broad search term like "fuel"
-const queryUrl = generateSmithsonianQuery(
-  api_key,
-  100,
-  "random",
-  "wood",
-  params
-);
+const queryUrl = generateSmithsonianQuery(api_key, 100, "random", "", params);
 console.log(queryUrl);
 
 fetch(queryUrl)
   .then((res) => res.json())
   .then((data) => {
     console.log(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+fetch(queryUrl)
+  .then((res) => res.json())
+  .then((data) => {
+    const results = [];
+
+    data.response.rows.forEach((row) => {
+      if (
+        row.content &&
+        row.content.freetext &&
+        row.content.freetext.physicalDescription
+      ) {
+        const dataSource = row.content.descriptiveNonRepeating.data_source;
+        const title = row.content.descriptiveNonRepeating.title.content;
+        const physicalDescriptions =
+          row.content.freetext.physicalDescription.map((desc) => desc.content);
+        let imageUrl =
+          row.content.descriptiveNonRepeating.online_media.media[0].content;
+
+        results.push({
+          dataSource,
+          title,
+          physicalDescriptions,
+          imageUrl,
+        });
+      }
+    });
+
+    // Now you have an array of objects containing dataSource, title, physicalDescriptions, and imageUrl
+    console.log(results);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+function downloadJSON(data, filename = "data.json") {
+  const results = [];
+
+  data.response.rows.forEach((row) => {
+    if (
+      row.content &&
+      row.content.freetext &&
+      row.content.freetext.physicalDescription
+    ) {
+      const title = row.content.descriptiveNonRepeating.title.content;
+      const dataSource = row.content.descriptiveNonRepeating.data_source;
+      const physicalDescriptions = row.content.freetext.physicalDescription.map(
+        (desc) => desc.content
+      );
+      let imageUrl =
+        row.content.descriptiveNonRepeating.online_media.media[0].content;
+
+      results.push({
+        title, // Corrected the syntax here
+        dataSource,
+        physicalDescriptions,
+        imageUrl,
+      });
+    }
+  });
+
+  const blob = new Blob([JSON.stringify(results, null, 2)], {
+    type: "application/json",
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// Example usage:
+fetch(queryUrl)
+  .then((res) => res.json())
+  .then((data) => {
+    downloadJSON(data, "smithsonian_data.json");
   })
   .catch((error) => {
     console.log(error);

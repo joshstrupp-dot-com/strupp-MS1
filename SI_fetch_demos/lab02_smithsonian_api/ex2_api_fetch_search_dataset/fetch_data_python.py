@@ -34,7 +34,7 @@ def generate_smithsonian_query(api_key, rows=100, sort='relevancy', search_term=
     return query_url
 
 # Example usage:
-api_key = "tpgd1EoS6jOq3yaTETG1TAL774fulGgxKWhgqHdw"
+api_key = ""
 params = {
     "unit_code": "NASM",      # Unit code for museum
     # "online_media_rights": "No Restrictions",      # Media rights, e.g., "No Restrictions"

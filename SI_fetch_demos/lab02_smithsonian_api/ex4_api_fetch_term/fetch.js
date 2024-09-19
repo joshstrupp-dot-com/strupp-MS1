@@ -2,27 +2,28 @@
 // check API documentation for terms here: http://edan.si.edu/openaccess/apidocs/#api-search-terms
 
 // put your API key here;
-const apiKey = "tpgd1EoS6jOq3yaTETG1TAL774fulGgxKWhgqHdw";  
-
+const apiKey = "";
 // Access to terms by term category (I.e. online_media_type > Images)
 const termBaseURL = "https://api.si.edu/openaccess/api/v1.0/terms/";
 
 // search: fetches an array of terms based on term category
 function fetchTermsData(termCategory) {
-    let url = termBaseURL + termCategory +"?api_key=" + apiKey;
-    window
+  let url = termBaseURL + termCategory + "?api_key=" + apiKey;
+  window
     .fetch(url)
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       console.log(data.response.terms);
-      console.log(`There are ${data.response.terms.length} terms in the term category: ${termCategory}`);
+      console.log(
+        `There are ${data.response.terms.length} terms in the term category: ${termCategory}`
+      );
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
-    })
-  }
+    });
+}
 
-fetchTermsData("culture")
+fetchTermsData("culture");
 
 /*
 Task: Play around with the different categories listed here:

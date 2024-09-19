@@ -45,7 +45,7 @@ function generateSmithsonianQuery(
   return queryUrl;
 }
 // Example usage:
-const api_key = "tpgd1EoS6jOq3yaTETG1TAL774fulGgxKWhgqHdw";
+const api_key = "";
 const params = {
   // unit_code: "HMSG", // Unit code for museum
   // "object_type": "Books", // Type of object

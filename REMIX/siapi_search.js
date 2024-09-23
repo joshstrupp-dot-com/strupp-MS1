@@ -2,7 +2,7 @@
 
 function generateSmithsonianQuery(
   api_key,
-  rows = 100,
+  // rows = 100,
   sort = "relevancy",
   search_term = null,
   params = {}
@@ -12,7 +12,7 @@ function generateSmithsonianQuery(
    * search_term parameter for broader searches.
    *
    * @param {string} api_key - Your API key for the Smithsonian API.
-   * @param {number} rows - The number of results to return. Default is 100.
+  //  * @param {number} rows - The number of results to return. Default is 100.
    * @param {string} sort - Sorting of results ('relevancy', 'id', 'newest', 'updated', 'random').
    * @param {string} search_term - A broad search term not tied to any specific field.
    * @param {object} params - Other arbitrary keyword arguments representing query parameters like unit_code, place, etc.
@@ -42,14 +42,15 @@ function generateSmithsonianQuery(
   const queryString = queryParts.join("+AND+");
 
   // Constructing the final URL
-  const queryUrl = `${baseUrl}${queryString}&api_key=${api_key}&rows=${rows}&sort=${sort}`;
+  // const queryUrl = `${baseUrl}${queryString}&api_key=${api_key}&rows=${rows}&sort=${sort}`;
+  const queryUrl = `${baseUrl}${queryString}&api_key=${api_key}&sort=${sort}`;
 
   return queryUrl;
 }
 // require("dotenv").config();
 
 // Example usage:
-const api_key = "";
+const api_key = "tpgd1EoS6jOq3yaTETG1TAL774fulGgxKWhgqHdw";
 
 const params = {
   unit_code: "HMSG", // Unit code for museum
@@ -58,114 +59,114 @@ const params = {
   // "language": "English",     // Language from the vocabulary list
   // "topic": "Outer space",       // Topic of the object
   // "place": "United States of America",  // Geographic place
-  online_media_type: "Image*",
+  // online_media_type: "Image*",
 };
 
 // You can now add a broad search term like "fuel"
 const queryUrl = generateSmithsonianQuery(
   api_key,
-  1000,
+  // 1000,
   "relevancy",
   "",
   params
 );
 console.log(queryUrl);
 
-fetch(queryUrl)
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+// fetch(queryUrl)
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
 
-fetch(queryUrl)
-  .then((res) => res.json())
-  .then((data) => {
-    const results = [];
+// fetch(queryUrl)
+//   .then((res) => res.json())
+//   .then((data) => {
+//     const results = [];
 
-    data.response.rows.forEach((row) => {
-      if (
-        row.content &&
-        row.content.freetext &&
-        row.content.freetext.physicalDescription
-      ) {
-        const dataSource = row.content.descriptiveNonRepeating.data_source;
-        const title = row.content.descriptiveNonRepeating.title.content;
-        const physicalDescriptions =
-          row.content.freetext.physicalDescription.map((desc) => desc.content);
-        let imageUrl =
-          row.content.descriptiveNonRepeating.online_media.media[0].content;
+//     data.response.rows.forEach((row) => {
+//       if (
+//         row.content &&
+//         row.content.freetext &&
+//         row.content.freetext.physicalDescription
+//       ) {
+//         const dataSource = row.content.descriptiveNonRepeating.data_source;
+//         const title = row.content.descriptiveNonRepeating.title.content;
+//         const physicalDescriptions =
+//           row.content.freetext.physicalDescription.map((desc) => desc.content);
+//         let imageUrl =
+//           row.content.descriptiveNonRepeating.online_media.media[0].content;
 
-        results.push({
-          dataSource,
-          title,
-          physicalDescriptions,
-          imageUrl,
-        });
-      }
-    });
+//         results.push({
+//           dataSource,
+//           title,
+//           physicalDescriptions,
+//           imageUrl,
+//         });
+//       }
+//     });
 
-    // Now you have an array of objects containing dataSource, title, physicalDescriptions, and imageUrl
-    console.log(results);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+//     // Now you have an array of objects containing dataSource, title, physicalDescriptions, and imageUrl
+//     console.log(results);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
-function downloadJSON(data, filename = "data.json") {
-  const results = [];
+// function downloadJSON(data, filename = "data.json") {
+//   const results = [];
 
-  data.response.rows.forEach((row) => {
-    if (
-      row.content &&
-      row.content.freetext &&
-      row.content.freetext.physicalDescription
-    ) {
-      const title = row.content.descriptiveNonRepeating.title.content;
-      const dataSource = row.content.descriptiveNonRepeating.data_source;
-      const physicalDescriptions = row.content.freetext.physicalDescription.map(
-        (desc) => desc.content
-      );
-      const names = row.content.freetext.name
-        ? row.content.freetext.name.map((name) => name.content)
-        : [];
-      let imageUrl =
-        row.content.descriptiveNonRepeating.online_media.media[0].content;
+//   data.response.rows.forEach((row) => {
+//     if (
+//       row.content &&
+//       row.content.freetext &&
+//       row.content.freetext.physicalDescription
+//     ) {
+//       const title = row.content.descriptiveNonRepeating.title.content;
+//       const dataSource = row.content.descriptiveNonRepeating.data_source;
+//       const physicalDescriptions = row.content.freetext.physicalDescription.map(
+//         (desc) => desc.content
+//       );
+//       const names = row.content.freetext.name
+//         ? row.content.freetext.name.map((name) => name.content)
+//         : [];
+//       let imageUrl =
+//         row.content.descriptiveNonRepeating.online_media.media[0].content;
 
-      results.push({
-        title,
-        dataSource,
-        physicalDescriptions,
-        names,
-        imageUrl,
-      });
-    }
-  });
+//       results.push({
+//         title,
+//         dataSource,
+//         physicalDescriptions,
+//         names,
+//         imageUrl,
+//       });
+//     }
+//   });
 
-  const blob = new Blob([JSON.stringify(results, null, 2)], {
-    type: "application/json",
-  });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
+//   const blob = new Blob([JSON.stringify(results, null, 2)], {
+//     type: "application/json",
+//   });
+//   const url = URL.createObjectURL(blob);
+//   const a = document.createElement("a");
+//   a.href = url;
+//   a.download = filename;
+//   document.body.appendChild(a);
+//   a.click();
+//   document.body.removeChild(a);
+//   URL.revokeObjectURL(url);
+// }
 
-// Example usage:
-fetch(queryUrl)
-  .then((res) => res.json())
-  .then((data) => {
-    downloadJSON(data, "smithsonian_data.json");
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// // Example usage:
+// fetch(queryUrl)
+//   .then((res) => res.json())
+//   .then((data) => {
+//     downloadJSON(data, "smithsonian_data.json");
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
 // PRIORITY UNITS
 // # // HMSG: Hirshhorn Museum and Sculpture Garden

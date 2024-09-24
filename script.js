@@ -671,7 +671,7 @@ svg
 // });
 
 // Fixed modal dimensions
-const modalWidth = window.innerWidth;
+const modalWidth = svgWidth;
 window.addEventListener("resize", () => {
   svg.attr("width", window.innerWidth);
 });
@@ -851,7 +851,7 @@ modal
   .attr("y", 510);
 
 // Define a linear gradient for the modal background
-const modalGradient = svg
+const modalGradient = modal 
   .append("defs")
   .append("linearGradient")
   .attr("id", "modalGradient")

@@ -1,0 +1,19 @@
+{
+  "folders": [
+	{
+		"path": "../../../../../Data Viz & Info Aesthetics"
+	},
+	{
+		"path": "../../../../../GIS"
+	},
+	{
+		"path": "../../../.."
+	},
+	{
+		"path": "../../../../../Data Structures"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Major Studio 1"
+  }
+}

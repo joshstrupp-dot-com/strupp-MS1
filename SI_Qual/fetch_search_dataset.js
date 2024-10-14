@@ -3,7 +3,7 @@
 // Using this data set https://collections.si.edu/search/results.htm?q=Flowers&view=grid&fq=data_source%3A%22Cooper+Hewitt%2C+Smithsonian+Design+Museum%22&fq=online_media_type%3A%22Images%22&media.CC0=true&fq=object_type:%22Embroidery+%28visual+works%29%22
 
 // put your API key here;
-const apiKey = "XK7BrLxDdDqLWORrICngROzSp8WySfIvHNVw3L28";
+// const apiKey = "XK7BrLxDdDqLWORrICngROzSp8WySfIvHNVw3L28";
 
 // search base URL
 const searchBaseURL = "https://api.si.edu/openaccess/api/v1.0/search";
@@ -12,9 +12,9 @@ const searchBaseURL = "https://api.si.edu/openaccess/api/v1.0/search";
 // const search =  'mask AND unit_code:"FSG"';
 // const search = `New York AND unit_code: "NMAH" AND online_media_type:"Images"`;
 // const search = `pharmaceutical AND unit_code: "NMAH" AND online_media_type:"Images"`; NASM
-const search = `unit_code: "NASM" AND online_media_type:"Images"`;
+const search = `hat`;
 
-const sortBy = "random";
+const sortBy = "relevancy";
 
 // array that we will write into
 let myArray = [];
@@ -44,10 +44,10 @@ function fetchSearchData(searchTerm) {
       let pageSize = 1000;
       // let numberOfQueries = Math.ceil(data.response.rowCount / pageSize);
       // numberofQueries limits API requests. At 1000 per request. So 25 is 25,000
-      let numberOfQueries = 2;
+      let numberOfQueries = 50;
       console.log(numberOfQueries);
       let start = 1;
-      // let start = 25000; // Start at 25001st result
+      // let start = 1; // Start at 25001st result
 
       // total records in MAMMALS: 555492
       // so start would need to increase by 25000 roughly 22 times to get all records
@@ -113,6 +113,9 @@ function addObject(objectData) {
   // Extract record link if available
   const recordLink = descriptiveNonRepeating.record_link || "";
 
+  // Extract data source if available
+  const dataSource = descriptiveNonRepeating.data_source || "";
+
   // Extract OnlineMedia:Media if available
   let media = [];
   if (
@@ -153,6 +156,7 @@ function addObject(objectData) {
     id: objectData.id,
     title: title,
     recordLink: recordLink,
+    dataSource: dataSource,
     media: media,
     freetext: freetextData,
     indexedStructured: indexedStructuredData,
